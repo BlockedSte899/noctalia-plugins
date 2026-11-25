@@ -20,25 +20,6 @@
     "unchanged_body": "{path} already matches the current config.",
     "unchanged_title": "Nothing to export"
   },
-  "panel": {
-    "excluded": {
-      "one": "{count} key excluded from export.",
-      "other": "{count} keys excluded from export."
-    },
-    "export_button": "Export now",
-    "export_current": {
-      "one": "{count} setting in the file, matches the current config.",
-      "other": "{count} settings in the file, match the current config."
-    },
-    "export_pending": {
-      "one": "{count} setting, the config changed since the last export.",
-      "other": "{count} settings, the config changed since the last export."
-    },
-    "export_title": "Export",
-    "title": "Nix config generator",
-    "usage_body": "Settings are exported automatically except excluded paths. Manage manual settings separately; the plugin never creates or edits them.",
-    "usage_title": "How it works"
-  },
   "settings": {
     "exclude_paths": {
       "description": "Dotted paths such as calendar.account or widget.clock.color. * matches one segment, ** any number; \\. is a dot in a name. Arrays can only be excluded as a whole.",

@@ -1,7 +1,7 @@
 [[plugin]]
-id = "local/nix-config-generator"
+id = "blockedste899/nix-config-generator"
 name = "Nix config generator"
-version = "0.1.0"
+version = "0.1.2"
 author = "BlockedSte899"
 license = "MIT"
 icon = "file-code"

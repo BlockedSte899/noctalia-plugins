@@ -10,8 +10,8 @@ local M = {}
 
 -- Part of the first line of every generated file; an existing target without it is
 -- never overwritten.
-local MARKER = "local/nix-config-generator"
-local LEGACY_MARKER = "local/selective-nix-auto-v2"
+local MARKER = "blockedste899/nix-config-generator"
+local LEGACY_MARKERS = { "local/nix-config-generator", "local/selective-nix-auto-v2" }
 local MARKER_DIR = "nix-config-generator"
 local COMMAND_TIMEOUT_MS = 30000
 
@@ -87,8 +87,11 @@ function M.inspectTarget(target)
 		return nil, noctalia.tr("errors.unverifiable", { path = target, error = tostring(readErr) })
 	end
 	local firstLine = string.match(text, "^[^\n]*") or ""
-	if not string.find(firstLine, MARKER, 1, true)
-		and not string.find(firstLine, LEGACY_MARKER, 1, true) then
+	local recognized = string.find(firstLine, MARKER, 1, true) ~= nil
+	for _, marker in LEGACY_MARKERS do
+		recognized = recognized or string.find(firstLine, marker, 1, true) ~= nil
+	end
+	if not recognized then
 		return nil, noctalia.tr("errors.foreign", { path = target })
 	end
 	return text

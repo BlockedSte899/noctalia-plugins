@@ -1,9 +1,9 @@
 # Nix config generator for Noctalia.
 # Generates a Nix attribute set from the merged Noctalia configuration.
 
-id = "local/nix-config-generator"
+id = "blockedste899/nix-config-generator"
 name = "Nix config generator"
-version = "0.1.0"
+version = "0.1.2"
 plugin_api = 43
 author = "BlockedSte899"
 license = "MIT"
@@ -41,14 +41,6 @@ options = [
 [[shortcut]]
 id = "export"
 entry = "shortcut.luau"
-
-[[panel]]
-id = "panel"
-entry = "panel.luau"
-width = 440
-height = 380
-placement = "attached"
-position = "top_right"
 
 [[service]]
 id = "service"

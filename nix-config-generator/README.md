@@ -1,6 +1,6 @@
 # Nix config generator для Noctalia
 
-Плагин `local/nix-config-generator` автоматически записывает настройки Noctalia в Nix-файл,
+Плагин `blockedste899/nix-config-generator` автоматически записывает настройки Noctalia в Nix-файл,
 кроме выбранных путей. Ручной файл плагин не создаёт и не изменяет. Функции
 восстановления нет.
 
@@ -15,7 +15,7 @@
 
 ```sh
 noctalia msg plugins source add nix-config-generator git https://github.com/BlockedSte899/noctalia-plugins
-noctalia msg plugins enable local/nix-config-generator
+noctalia msg plugins enable blockedste899/nix-config-generator
 ```
 
 Для локальной разработки вместо Git-источника можно добавить `path`-источник,
@@ -27,9 +27,17 @@ noctalia msg plugins enable local/nix-config-generator
 экспортёром `noctalia.nix`. Встроенный по умолчанию путь —
 `~/.config/noctalia/nix-config-generator.nix`.
 
-Если использовалась предыдущая версия `local/selective-nix`, её настройки
-плагина автоматически не перенесутся: укажи целевой путь и исключения заново.
-Прежние файлы с маркером `local/selective-nix-auto-v2` совместимы с новой версией.
+Если использовалась предыдущая версия `local/nix-config-generator` или
+`local/selective-nix`, отключи её, включи новый ID и заново укажи целевой путь
+и исключения: настройки плагина автоматически не перенесутся. Ранее созданные
+файлы совместимы с новой версией.
+
+Экспорт запускается автоматически; при необходимости его можно запустить
+вручную кнопкой плагина в центре управления или командой:
+
+```sh
+noctalia msg plugin blockedste899/nix-config-generator:service all export
+```
 
 Второй экспортёр, если включён, лучше отключить:
 
@@ -115,6 +123,9 @@ Noctalia читает при синхронизации. Настрой agenix �
   `nix-instantiate`, перед записью проверяется синтаксис.
 
 ## Проверки
+
+При выпуске обновления повышай `version` одновременно в `catalog.toml` и
+`nix-config-generator/plugin.toml`.
 
 ```sh
 noctalia plugins lint ./nix-config-generator

@@ -1,5 +1,5 @@
 --!nonstrict
--- Control-center tile: click opens the panel, right-click exports immediately.
+-- Control-center tile: click exports immediately.
 
 local STATUS_KEY = "nix_config_generator.status"
 local COMMAND_KEY = "nix_config_generator.command"
@@ -27,11 +27,11 @@ noctalia.state.watch(STATUS_KEY, function(value)
 end)
 
 function onClick()
-	noctalia.togglePanel("local/nix-config-generator:panel")
+	noctalia.state.set(COMMAND_KEY, { action = "export", nonce = tostring(noctalia.nowMs()) })
 end
 
 function onRightClick()
-	noctalia.state.set(COMMAND_KEY, { action = "export", nonce = tostring(noctalia.nowMs()) })
+	onClick()
 end
 
 render()
