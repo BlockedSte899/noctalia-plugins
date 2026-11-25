@@ -1,0 +1,11 @@
+[[plugin]]
+id = "local/nix-config-generator"
+name = "Nix config generator"
+version = "0.1.0"
+author = "BlockedSte899"
+license = "MIT"
+icon = "file-code"
+description = "Automatically export Noctalia settings to Nix with per-path exclusions."
+plugin_api = 43
+tags = ["service", "shortcut", "nixos", "utility"]
+dependencies = ["nix", "coreutils"]

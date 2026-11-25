@@ -1,0 +1,55 @@
+# Selective settings-to-Nix for Noctalia.
+# Generates a Nix attribute set from the merged Noctalia configuration.
+
+id = "local/selective-nix"
+name = "Selective Nix Export"
+version = "0.1.0"
+plugin_api = 43
+author = "nikita"
+license = "MIT"
+icon = "file-code"
+description = "Mirrors your Noctalia config into a Nix file automatically, except the settings you choose to keep manual."
+tags = ["service", "shortcut", "nixos", "utility"]
+dependencies = ["nix", "coreutils"]
+
+[[setting]]
+key = "target_path"
+type = "file"
+label_key = "settings.target_path.label"
+description_key = "settings.target_path.description"
+default = "~/.config/noctalia/selective-nix.nix"
+extensions = [".nix"]
+
+[[setting]]
+key = "exclude_paths"
+type = "string_list"
+label_key = "settings.exclude_paths.label"
+description_key = "settings.exclude_paths.description"
+default = [ "calendar.account" ]
+
+[[setting]]
+key = "export_mode"
+type = "select"
+label_key = "settings.export_mode.label"
+description_key = "settings.export_mode.description"
+default = "merged"
+options = [
+  { value = "merged", label_key = "settings.export_mode.options.merged" },
+  { value = "full", label_key = "settings.export_mode.options.full" },
+]
+
+[[shortcut]]
+id = "export"
+entry = "shortcut.luau"
+
+[[panel]]
+id = "panel"
+entry = "panel.luau"
+width = 440
+height = 380
+placement = "attached"
+position = "top_right"
+
+[[service]]
+id = "service"
+entry = "service.luau"
