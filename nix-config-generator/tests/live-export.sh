@@ -3,7 +3,7 @@
 set -eu
 umask 077
 root="$(cd "$(dirname "$0")/.." && pwd)"
-dir="$(mktemp -d "${TMPDIR:-/tmp}/selective-nix-test.XXXXXXXX")"
+dir="$(mktemp -d "${TMPDIR:-/tmp}/nix-config-generator-test.XXXXXXXX")"
 trap 'rm -rf -- "$dir"' EXIT
 cp -R "$root/lib" "$dir/lib"
 noctalia config export merged --credentials omit > "$dir/input.toml"

@@ -16,7 +16,7 @@
       "other": "{count} настроек записано в {path}; {excluded} исключено."
     },
     "done_title": "Конфиг экспортирован в Nix",
-    "failed_title": "Selective Nix: ошибка экспорта",
+    "failed_title": "Nix config generator: ошибка экспорта",
     "unchanged_body": "{path} уже соответствует текущему конфигу.",
     "unchanged_title": "Экспортировать нечего"
   },
@@ -35,7 +35,7 @@
       "other": "{count} настроек, конфиг изменился с последнего экспорта."
     },
     "export_title": "Экспорт",
-    "title": "Selective Nix Export",
+    "title": "Nix config generator",
     "usage_body": "Настройки экспортируются автоматически, кроме исключённых путей. Ручной конфиг редактируется отдельно; плагин его не создаёт и не изменяет.",
     "usage_title": "Как это работает"
   },

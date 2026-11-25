@@ -16,7 +16,7 @@
       "other": "{count} settings written to {path}; {excluded} excluded."
     },
     "done_title": "Config exported to Nix",
-    "failed_title": "Selective Nix export failed",
+    "failed_title": "Nix config generator export failed",
     "unchanged_body": "{path} already matches the current config.",
     "unchanged_title": "Nothing to export"
   },
@@ -35,7 +35,7 @@
       "other": "{count} settings, the config changed since the last export."
     },
     "export_title": "Export",
-    "title": "Selective Nix Export",
+    "title": "Nix config generator",
     "usage_body": "Settings are exported automatically except excluded paths. Manage manual settings separately; the plugin never creates or edits them.",
     "usage_title": "How it works"
   },

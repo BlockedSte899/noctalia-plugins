@@ -1,8 +1,8 @@
 --!nonstrict
 -- Control-center tile: click opens the panel, right-click exports immediately.
 
-local STATUS_KEY = "selective_nix.status"
-local COMMAND_KEY = "selective_nix.command"
+local STATUS_KEY = "nix_config_generator.status"
+local COMMAND_KEY = "nix_config_generator.command"
 
 local status = noctalia.state.get(STATUS_KEY) or {}
 
@@ -27,7 +27,7 @@ noctalia.state.watch(STATUS_KEY, function(value)
 end)
 
 function onClick()
-	noctalia.togglePanel("local/selective-nix:panel")
+	noctalia.togglePanel("local/nix-config-generator:panel")
 end
 
 function onRightClick()

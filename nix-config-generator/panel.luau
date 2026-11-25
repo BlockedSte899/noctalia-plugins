@@ -1,8 +1,8 @@
 --!nonstrict
 -- Panel: status of the generated file and a manual export button.
 
-local STATUS_KEY = "selective_nix.status"
-local COMMAND_KEY = "selective_nix.command"
+local STATUS_KEY = "nix_config_generator.status"
+local COMMAND_KEY = "nix_config_generator.command"
 
 local status = noctalia.state.get(STATUS_KEY) or {}
 

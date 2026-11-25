@@ -1,11 +1,11 @@
-# Selective settings-to-Nix for Noctalia.
+# Nix config generator for Noctalia.
 # Generates a Nix attribute set from the merged Noctalia configuration.
 
-id = "local/selective-nix"
-name = "Selective Nix Export"
+id = "local/nix-config-generator"
+name = "Nix config generator"
 version = "0.1.0"
 plugin_api = 43
-author = "nikita"
+author = "BlockedSte899"
 license = "MIT"
 icon = "file-code"
 description = "Mirrors your Noctalia config into a Nix file automatically, except the settings you choose to keep manual."
@@ -17,7 +17,7 @@ key = "target_path"
 type = "file"
 label_key = "settings.target_path.label"
 description_key = "settings.target_path.description"
-default = "~/.config/noctalia/selective-nix.nix"
+default = "~/.config/noctalia/nix-config-generator.nix"
 extensions = [".nix"]
 
 [[setting]]

@@ -4,8 +4,8 @@
 
 local exporter = require("./lib/export.luau")
 
-local STATUS_KEY = "selective_nix.status"
-local COMMAND_KEY = "selective_nix.command"
+local STATUS_KEY = "nix_config_generator.status"
+local COMMAND_KEY = "nix_config_generator.command"
 
 local lastSignature = nil
 local busy = false
@@ -82,7 +82,7 @@ end
 local function failed(err, manual)
 	failures += 1
 	retryAt = os.time() + math.min(RETRY_FIRST * 2 ^ (failures - 1), RETRY_MAX)
-	noctalia.log(`selective-nix: export failed (attempt {failures}): {err}`)
+	noctalia.log(`nix-config-generator: export failed (attempt {failures}): {err}`)
 	if manual or failures == 1 then
 		noctalia.notifyError(noctalia.tr("notify.failed_title"), err)
 	end

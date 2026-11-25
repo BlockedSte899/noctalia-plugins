@@ -1,6 +1,6 @@
-# Selective Nix Export для Noctalia
+# Nix config generator для Noctalia
 
-Плагин `local/selective-nix` автоматически записывает настройки Noctalia в Nix-файл,
+Плагин `local/nix-config-generator` автоматически записывает настройки Noctalia в Nix-файл,
 кроме выбранных путей. Ручной файл плагин не создаёт и не изменяет. Функции
 восстановления нет.
 
@@ -11,18 +11,25 @@
 
 ## Установка
 
-Для текущей директории проекта:
+Добавь Git-репозиторий как источник плагинов:
 
 ```sh
-noctalia msg plugins source add local-nix path /home/nikita/Documents/opencode-projects/noctalia-plugins
-noctalia msg plugins enable local/selective-nix
+noctalia msg plugins source add nix-config-generator git https://github.com/BlockedSte899/noctalia-plugins
+noctalia msg plugins enable local/nix-config-generator
 ```
+
+Для локальной разработки вместо Git-источника можно добавить `path`-источник,
+указав путь к корню клонированного репозитория.
 
 В настройках плагина выбери **новый** путь, например
 `/home/nikita/nixos-config/home-manager/modules/noctalia/generated.nix`.
 Плагин не перезаписывает чужие файлы, включая ранее созданный другим
 экспортёром `noctalia.nix`. Встроенный по умолчанию путь —
-`~/.config/noctalia/selective-nix.nix`.
+`~/.config/noctalia/nix-config-generator.nix`.
+
+Если использовалась предыдущая версия `local/selective-nix`, её настройки
+плагина автоматически не перенесутся: укажи целевой путь и исключения заново.
+Прежние файлы с маркером `local/selective-nix-auto-v2` совместимы с новой версией.
 
 Второй экспортёр, если включён, лучше отключить:
 
@@ -110,8 +117,8 @@ Noctalia читает при синхронизации. Настрой agenix �
 ## Проверки
 
 ```sh
-noctalia plugins lint ./selective-nix
-cd selective-nix
+noctalia plugins lint ./nix-config-generator
+cd nix-config-generator
 nix shell nixpkgs#luau -c luau tests/core.luau
 nix shell nixpkgs#luau nixpkgs#python3 -c bash tests/live-export.sh
 ```
