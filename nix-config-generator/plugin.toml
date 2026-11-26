@@ -3,7 +3,7 @@
 
 id = "blockedste899/nix-config-generator"
 name = "Nix config generator"
-version = "0.1.2"
+version = "0.1.3"
 plugin_api = 43
 author = "BlockedSte899"
 license = "MIT"
@@ -26,6 +26,27 @@ type = "string_list"
 label_key = "settings.exclude_paths.label"
 description_key = "settings.exclude_paths.description"
 default = [ "calendar.account" ]
+
+[[setting]]
+key = "rewrite_paths"
+type = "bool"
+label_key = "settings.rewrite_paths.label"
+description_key = "settings.rewrite_paths.description"
+default = false
+
+[[setting]]
+key = "path_prefix_from"
+type = "string"
+label_key = "settings.path_prefix_from.label"
+description_key = "settings.path_prefix_from.description"
+default = "~"
+
+[[setting]]
+key = "path_prefix_to"
+type = "string"
+label_key = "settings.path_prefix_to.label"
+description_key = "settings.path_prefix_to.description"
+default = "~"
 
 [[setting]]
 key = "export_mode"

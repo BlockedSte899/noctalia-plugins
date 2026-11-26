@@ -21,6 +21,18 @@
     "unchanged_title": "Nothing to export"
   },
   "settings": {
+    "rewrite_paths": {
+      "label": "Replace path prefix",
+      "description": "Replace the configured prefix at the beginning of exported string values. Source and manual settings are not changed."
+    },
+    "path_prefix_from": {
+      "label": "Original path prefix",
+      "description": "An absolute path, or ~ for the home directory. Matches only on a directory boundary."
+    },
+    "path_prefix_to": {
+      "label": "Replacement path prefix",
+      "description": "For example, ~. Make sure the consuming program expands the replacement in the affected settings."
+    },
     "exclude_paths": {
       "description": "Dotted paths such as calendar.account or widget.clock.color. * matches one segment, ** any number; \\. is a dot in a name. Arrays can only be excluded as a whole.",
       "label": "Manual paths (excluded)"

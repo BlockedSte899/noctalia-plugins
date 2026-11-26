@@ -5,6 +5,7 @@
 local toml = require("./toml.luau")
 local nix = require("./nix.luau")
 local filter = require("./filter.luau")
+local pathRewrite = require("./path-rewrite.luau")
 
 local M = {}
 
@@ -20,6 +21,9 @@ function M.config()
 		target = noctalia.getConfig("target_path"),
 		exclude = noctalia.getConfig("exclude_paths") or { "calendar.account" },
 		mode = noctalia.getConfig("export_mode") or "merged",
+		rewrite_paths = noctalia.getConfig("rewrite_paths") == true,
+		path_prefix_from = noctalia.getConfig("path_prefix_from") or "~",
+		path_prefix_to = noctalia.getConfig("path_prefix_to") or "~",
 	}
 end
 
@@ -150,6 +154,10 @@ function M.plan(cfg, text, checkpoint)
 	end
 
 	local auto, _, stats = filter.partition(parsed, filter.compilePatterns(cfg.exclude), checkpoint)
+	if cfg.rewrite_paths then
+		local from = noctalia.expandPath(cfg.path_prefix_from)
+		auto = pathRewrite.apply(auto, from, cfg.path_prefix_to, checkpoint)
+	end
 	local content = header(cfg) .. nix.render(auto, "", checkpoint) .. "\n"
 
 	return {
